@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Card Preview</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script type="text/javascript" src="main.js?v=1" defer></script>
+</head>
+
+<body>
+
+  <div class="gradient-half">
+    <div class="cards">
+      <div class="top-card">
+        <img src="images/card-logo.svg" alt="" class="logo">
+        <p class="card-number-display" id="card-number-display">0000&nbsp;0000&nbsp;0000&nbsp;0000</p>
+        <div class="exp-name-display-container">
+          <p class="holder-name-display" id="holder-name-display">JANE APPLESEED</p>
+          <p class="exp-display" id="exp-display">00/00</p>
+        </div>
+      </div>
+      <div class="bottom-card">
+        <p class="cvc-display" id="cvc-display">000</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="info-half">
+
+
+
+    <div class="form-items">
+
+
+
+      <div class="form" id="form">
+        <form action="#">
+          <div class="card-holder-container">
+
+            <label for="card-holder-name-input">CARDHOLDER NAME<input type="text" name="card-holder-name-input"
+                class="card-holder-name" id="card-holder-name-input" placeholder="e.g. Jane Appleseed"></label>
+          </div>
+          <div class="card-number-container">
+
+            <label for="card-holder-name-input">CARD NUMBER<input type="text" name="card-number-input"
+                class="card-number" id="card-number-input" placeholder="e.g. 1234 5678 9123 0000"
+                maxlength="16"></label>
+          </div>
+          <div class="cvc-container">
+
+            <label for="card-holder-name-input">CVC<input type="text" name="card-cvc-input" class="card-cvc"
+                id="card-cvc" placeholder="e.g. 123" maxlength="3"></label>
+          </div>
+
+          <div class="expiration">
+            <div class="expiration-container">
+              <label for="month-input year-input">EXP. DATE (MM/YY)
+                <span class="expiration-inputs">
+                  <input type="text" name="month-input" class="card-month" id="card-month" placeholder="MM" maxlength="2"><input type="text"
+                    name="year-input" class="card-year" id="card-year" placeholder="YY" maxlength="2">
+                </span>
+              </label>
+            </div>
+          </div>
+        </form>
+        <button class="confirm-button" id="confirm-button-main">Confirm</button>
+      </div>
+      <div class="confirm-container" style="display: none;" id="confirm">
+        <img src="images/icon-complete.svg" alt="check-mark">
+        <h3>THANK YOU!</h3>
+        <p>We've added your card details</p>
+        <button class="confirm-button" id="continue-button-main">Continue</button>
+      </div>
+
+    </div>
+  </div>
+
+
+</body>
+
+</html>

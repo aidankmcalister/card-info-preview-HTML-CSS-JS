@@ -1,0 +1,346 @@
+:root {
+  --clr-gradient: linear-gradient(-45deg, hsl(249, 99%, 14%), hsl(250, 34%, 14%), hsl(320, 44%, 23%), hsl(278, 94%, 20%));
+  --clr-card-gradient: linear-gradient(-45deg, hsl(249, 79%, 44%), hsl(249, 79%, 54%), hsl(6, 72%, 66%), hsl(250, 34%, 44%), hsl(320, 44%, 53%), hsl(278, 94%, 70%), hsl(249, 99%, 54%));
+  --clr-error: hsl(0, 100%, 66%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-lightviolet: hsl(270, 3%, 87%);
+  --clr-darkviolet: hsl(279, 6%, 55%);
+  --clr-verydarkviolet: hsl(278, 68%, 11%);
+
+  --fs-body: 1.125rem;
+
+  --ff-primary: 'Space Grotesk', sans-serif;
+
+}
+
+/* #region reset */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* #endregion reset */
+
+
+
+body {
+  overflow-x: hidden;
+  background: rgb(75, 75, 75);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  font-family: var(--ff-primary);
+  caret-color: hsla(299, 56%, 19%, 0.5);
+}
+
+.info-half {
+  background-color: white;
+  width: 100%;
+  box-shadow: -0.05rem 0 .5rem black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.gradient-half {
+  background: var(--clr-gradient);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+input,
+label {
+  display: block;
+  letter-spacing: .1rem;
+}
+
+label {
+  color: var(--clr-verydarkviolet);
+  font-size: .9rem;
+}
+
+input {
+  color: var(--clr-darkviolet);
+  border-radius: .35rem;
+  border: 1px solid var(--clr-lightviolet);
+  padding: .5rem;
+  width: 100%;
+  outline-color: hsla(299, 56%, 19%, 0.5);
+}
+
+.card-holder-container {
+  grid-area: 1 / 1 / 1 / span 2;
+}
+
+.card-number-container {
+  grid-area: 2 / 1 / 2 / span 2;
+}
+
+.cvc-container {
+  grid-area: 3 / 2 / 3 / 2;
+
+}
+
+.expiration {
+  grid-area: 3 / 1 / 3 / 1;
+}
+
+.expiration-container {
+  display: flex;
+  align-items: space-between;
+  flex-wrap: nowrap;
+}
+
+.expiration-inputs{
+  display: flex;
+  gap: 1rem;
+}
+
+.card-month,
+.card-year {
+  width: 5.7rem;
+}
+
+.confirm-button {
+  width: 100%;
+  border-radius: .5rem;
+  border: none;
+  background-color: var(--clr-verydarkviolet);
+  color: var(--clr-white);
+  padding: .875rem;
+  transition: all .3s ease-in-out;
+  transition: transform .2s;
+}
+
+.confirm-button:hover {
+  background-color: hsl(278, 38%, 51%);
+  transition: all .2s ease-in-out;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.top-card,
+.bottom-card {
+  width: 27rem;
+  min-height: 15rem;
+  border-radius: 0.5rem;
+  box-shadow: -.7rem .7rem 1rem hsla(0, 0%, 8%, .7);
+  position: fixed;
+}
+
+@media (min-width: 1200px) {
+  .top-card {
+    top: 27vh;
+    right: 62vw;
+  }
+
+  .bottom-card {
+    bottom: 27vh;
+    right: 55vw;
+  }
+
+  form {
+    width: 27rem;
+  }
+}
+
+.top-card {
+  padding: 1.5rem;
+  background-image: url(images/bg-card-front.png);
+  color: var(--clr-white);
+  display: flex;
+  flex-direction: column;
+  letter-spacing: .15rem;
+  gap: 1.4rem;
+  bottom: auto;
+  z-index: 1;
+  background-repeat: no-repeat;
+}
+
+.card-number-display {
+  align-self: center;
+  font-size: 1.5rem;
+}
+
+.logo {
+  width: 5rem;
+  margin-bottom: 3rem;
+}
+
+.exp-name-display-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.holder-name-display,
+.exp-display {
+  font-size: .7rem;
+}
+
+.bottom-card {
+  background-image: url(images/bg-card-back.png);
+  padding: 2.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-repeat: no-repeat;
+}
+
+.cvc-display {
+  color: var(--clr-white);
+}
+
+.confirm-container {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  gap: 1.7rem;
+  align-items: center;
+}
+
+.confirm-container h3 {
+  letter-spacing: .2rem;
+  font-size: 1.4rem;
+}
+
+.confirm-container button {
+  width: 27rem;
+}
+
+.confirm-container img {
+  width: 5rem;
+}
+
+.confirm-container p {
+  color: var(--clr-darkviolet);
+  margin-bottom: 1rem;
+}
+
+
+
+@media (max-width: 1200px) {
+  body  {
+    grid-template-columns: none;
+    grid-template-rows: 1fr 2fr;
+  }
+
+  .info-half {
+    flex-direction: column;
+    z-index: 0;
+  }
+
+  .form {
+    margin-bottom: 10vh;
+    overflow: hidden;
+    padding: 1.2rem;
+    max-width: 27rem;
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+
+  .top-card,
+  .bottom-card {
+    transform: scale(.7);
+  }
+  
+  .top-card {  
+    right: 4.5vw;
+    bottom: 55vh;
+  }
+  
+  .bottom-card {
+    left: 4.5vw;
+    bottom: 67vh;
+  }
+
+ .confirm-container {
+    width: 100%;
+  }
+
+
+}
